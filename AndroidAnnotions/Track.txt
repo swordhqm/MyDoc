@@ -1,0 +1,324 @@
+androidannotations-with-codemodel	//定义了输出jar 包
+
+androidannotations-api	
+	src/main/eclipse	就一个Activator.java 与plugin 相关 目前不太清楚
+	src/main/java	--annotations	//Annotation 定义
+					--api	//对外API 封装
+							BackgroundExecutor	
+							SdkVersionHelper
+							ActivityIntentBuilder Builder FragmentBuilder IntentBuilder ServiceIntentBuilder
+							MediaType RestClientHeaders RestClientSupport RestClientErrorHandling RestClientRootUrl RestErrorHandler //与网络Url 相关
+							AbstractPrefEditorField FloatPrefEditorField LongPrefField StringPrefField AbstractPrefField FloatPrefField SetXmlSerializer StringSetPrefEditorField BooleanPrefEditorField IntPrefEditorField SharedPreferencesCompat StringSetPrefField BooleanPrefField IntPrefField SharedPreferencesHelper EditorHelper LongPrefEditorField StringPrefEditorField
+							HasViews OnViewChangedListener OnViewChangedNotifier
+							ViewServer
+					--resources	(空)
+	src/main/resources	(空)
+	
+androidannotations 核心 负责生成code
+	src/main/eclipse
+	src/main/java
+	src/main/resources
+
+star_he@realsil-MM2-1:~/linkHome/study/androidannotations/AndroidAnnotations/androidannotations-api/src/main$ ls java/ -R
+java/:
+org
+
+java/org:
+androidannotations
+
+java/org/androidannotations:
+annotations  api
+
+java/org/androidannotations/annotations:
+AfterInject.java       EditorAction.java    FromHtml.java                  OptionsItem.java            ServiceAction.java
+AfterTextChange.java   EFragment.java       Fullscreen.java                OptionsMenuItem.java        sharedpreferences
+AfterViews.java        EIntentService.java  HierarchyViewerSupport.java    OptionsMenu.java            SupposeBackground.java
+App.java               EProvider.java       HttpsClient.java               OrmLiteDao.java             SupposeUiThread.java
+Background.java        EReceiver.java       IgnoredWhenDetached.java       Receiver.java               SystemService.java
+Bean.java              EService.java        InstanceState.java             res                         TextChange.java
+BeforeTextChange.java  EViewGroup.java      ItemClick.java                 ResId.java                  Touch.java
+CheckedChange.java     EView.java           ItemLongClick.java             rest                        Trace.java
+Click.java             Extra.java           ItemSelect.java                RoboGuice.java              Transactional.java
+CustomTitle.java       FocusChange.java     LongClick.java                 RootContext.java            UiThread.java
+EActivity.java         FragmentArg.java     NonConfigurationInstance.java  SeekBarProgressChange.java  ViewById.java
+EApplication.java      FragmentById.java    NoTitle.java                   SeekBarTouchStart.java      ViewsById.java
+EBean.java             FragmentByTag.java   OnActivityResult.java          SeekBarTouchStop.java       WindowFeature.java
+
+java/org/androidannotations/annotations/res:
+AnimationRes.java  ColorStateListRes.java        DimensionRes.java  IntArrayRes.java  MovieRes.java        TextArrayRes.java
+BooleanRes.java    DimensionPixelOffsetRes.java  DrawableRes.java   IntegerRes.java   StringArrayRes.java  TextRes.java
+ColorRes.java      DimensionPixelSizeRes.java    HtmlRes.java       LayoutRes.java    StringRes.java
+
+java/org/androidannotations/annotations/rest:
+Accept.java  Head.java     Put.java                     RequiresCookie.java  RestService.java
+Delete.java  Options.java  RequiresAuthentication.java  RequiresHeader.java  SetsCookie.java
+Get.java     Post.java     RequiresCookieInUrl.java     Rest.java
+
+java/org/androidannotations/annotations/sharedpreferences:
+DefaultBoolean.java  DefaultInt.java   DefaultRes.java     DefaultStringSet.java  SharedPref.java
+DefaultFloat.java    DefaultLong.java  DefaultString.java  Pref.java
+
+java/org/androidannotations/api:
+BackgroundExecutor.java  builder  rest  SdkVersionHelper.java  sharedpreferences  view  ViewServer.java
+
+java/org/androidannotations/api/builder:
+ActivityIntentBuilder.java  Builder.java  FragmentBuilder.java  IntentBuilder.java  ServiceIntentBuilder.java
+
+java/org/androidannotations/api/rest:
+MediaType.java                RestClientHeaders.java  RestClientSupport.java
+RestClientErrorHandling.java  RestClientRootUrl.java  RestErrorHandler.java
+
+java/org/androidannotations/api/sharedpreferences:
+AbstractPrefEditorField.java  FloatPrefEditorField.java  LongPrefField.java            StringPrefField.java
+AbstractPrefField.java        FloatPrefField.java        SetXmlSerializer.java         StringSetPrefEditorField.java
+BooleanPrefEditorField.java   IntPrefEditorField.java    SharedPreferencesCompat.java  StringSetPrefField.java
+BooleanPrefField.java         IntPrefField.java          SharedPreferencesHelper.java
+EditorHelper.java             LongPrefEditorField.java   StringPrefEditorField.java
+
+java/org/androidannotations/api/view:
+HasViews.java  OnViewChangedListener.java  OnViewChangedNotifier.java
+
+
+
+==================================================================================================================================
+star_he@realsil-MM2-1:~/linkHome/study/androidannotations/AndroidAnnotations/androidannotations$ ls -R
+.:
+build.properties  META-INF  plugin.xml  pom.xml  src
+
+./META-INF:
+MANIFEST.MF
+
+./src:
+main  test
+
+./src/main:
+eclipse  java  resources
+
+./src/main/eclipse:
+org
+
+./src/main/eclipse/org:
+androidannotations
+
+./src/main/eclipse/org/androidannotations:
+Activator.java
+
+./src/main/java:
+com  org
+
+./src/main/java/com:
+sun
+
+./src/main/java/com/sun:
+codemodel
+
+./src/main/java/com/sun/codemodel:
+JSuperWildcard.java
+
+./src/main/java/org:
+androidannotations
+
+./src/main/java/org/androidannotations:
+AndroidAnnotationProcessor.java  exception  generation  handler  helper  holder  logger  model  process  rclass
+
+./src/main/java/org/androidannotations/exception:
+ProcessingException.java  VersionMismatchException.java
+
+./src/main/java/org/androidannotations/generation:
+ApiCodeGenerator.java  CodeModelGenerator.java  ResourceCodeWriter.java  SourceCodewriter.java
+
+./src/main/java/org/androidannotations/handler:
+AbstractListenerHandler.java      EViewGroupHandler.java                PrefHandler.java
+AbstractRunnableHandler.java      EViewHandler.java                     ReceiverHandler.java
+AbstractSeekBarTouchHandler.java  ExtraHandler.java                     ResHandler.java
+AfterInjectHandler.java           FocusChangeHandler.java               rest
+AfterTextChangeHandler.java       FragmentArgHandler.java               RoboGuiceHandler.java
+AfterViewsHandler.java            FragmentByIdHandler.java              RootContextHanlder.java
+AnnotationHandler.java            FragmentByTagHandler.java             SeekBarProgressChangeHandler.java
+AnnotationHandlers.java           FromHtmlHandler.java                  SeekBarTouchStartHandler.java
+AppHandler.java                   FullscreenHandler.java                SeekBarTouchStopHandler.java
+BackgroundHandler.java            GeneratingAnnotationHandler.java      ServiceActionHandler.java
+BaseAnnotationHandler.java        HierarchyViewerSupportHandler.java    SharedPrefHandler.java
+BeanHandler.java                  HttpsClientHandler.java               SupposeBackgroundHandler.java
+BeforeTextChangeHandler.java      IgnoredWhenDetachedHandler.java       SupposeThreadHandler.java
+CheckedChangeHandler.java         InstanceStateHandler.java             SupposeUiThreadHandler.java
+ClickHandler.java                 ItemClickHandler.java                 SystemServiceHandler.java
+CustomTitleHandler.java           ItemLongClickHandler.java             TextChangeHandler.java
+EActivityHandler.java             ItemSelectHandler.java                TouchHandler.java
+EApplicationHandler.java          LongClickHandler.java                 TraceHandler.java
+EBeanHandler.java                 NonConfigurationInstanceHandler.java  TransactionalHandler.java
+EditorActionHandler.java          NoTitleHandler.java                   UiThreadHandler.java
+EFragmentHandler.java             OnActivityResultHandler.java          ViewByIdHandler.java
+EIntentServiceHandler.java        OptionsItemHandler.java               ViewsByIdHandler.java
+EProviderHandler.java             OptionsMenuHandler.java               WindowFeatureHandler.java
+EReceiverHandler.java             OptionsMenuItemHandler.java
+EServiceHandler.java              OrmLiteDaoHandler.java
+
+./src/main/java/org/androidannotations/handler/rest:
+DeleteHandler.java  HeadHandler.java     PostHandler.java  RestHandler.java        RestServiceHandler.java
+GetHandler.java     OptionsHandler.java  PutHandler.java   RestMethodHandler.java
+
+./src/main/java/org/androidannotations/helper:
+ActionBarSherlockHelper.java        APTCodeModelHelper.java      IdAnnotationHelper.java    RoboGuiceConstants.java
+ActivityIntentBuilder.java          BundleHelper.java            IdValidatorHelper.java     ServiceIntentBuilder.java
+AndroidConstants.java               CanonicalNameConstants.java  IntentBuilder.java         TargetAnnotationHelper.java
+AndroidManifestFinder.java          CaseHelper.java              ModelConstants.java        ValidatorHelper.java
+AndroidManifest.java                ErrorHelper.java             Option.java                ValidatorParameterHelper.java
+AnnotationArrayParamExtractor.java  FileHelper.java              OptionsHelper.java         ViewNotifierHelper.java
+AnnotationHelper.java               GreenDroidHelper.java        Pair.java
+AnnotationParamExtractor.java       HoloEverywhereHelper.java    RestAnnotationHelper.java
+
+./src/main/java/org/androidannotations/holder:
+BaseGeneratedClassHolder.java         EServiceHolder.java        HasReceiverRegistration.java
+EActivityHolder.java                  EViewGroupHolder.java      InstanceStateHolder.java
+EApplicationHolder.java               EViewHolder.java           NonConfigurationHolder.java
+EBeanHolder.java                      FoundViewHolder.java       OnActivityResultHolder.java
+EComponentHolder.java                 GeneratedClassHolder.java  OnSeekBarChangeListenerHolder.java
+EComponentWithViewSupportHolder.java  HasExtras.java             ReceiverRegistrationHolder.java
+EFragmentHolder.java                  HasInstanceState.java      RestHolder.java
+EIntentServiceHolder.java             HasIntentBuilder.java      RoboGuiceHolder.java
+EProviderHolder.java                  HasOnActivityResult.java   SharedPrefHolder.java
+EReceiverHolder.java                  HasOptionsMenu.java        TextWatcherHolder.java
+
+./src/main/java/org/androidannotations/logger:
+appender  formatter  Level.java  LoggerContext.java  LoggerFactory.java  Logger.java
+
+./src/main/java/org/androidannotations/logger/appender:
+Appender.java  ConsoleAppender.java  FileAppender.java  MessagerAppender.java
+
+./src/main/java/org/androidannotations/logger/formatter:
+FormatterFull.java  Formatter.java  FormatterSimple.java
+
+./src/main/java/org/androidannotations/model:
+AndroidRes.java  AndroidSystemServices.java  AnnotationElementsHolder.java  AnnotationElements.java  ModelExtractor.java
+
+./src/main/java/org/androidannotations/process:
+IsValid.java  ModelProcessor.java  ModelValidator.java  OriginatingElements.java  ProcessHolder.java  TimeStats.java
+
+./src/main/java/org/androidannotations/rclass:
+AndroidRClassFinder.java  CoumpoundRClass.java  IRInnerClass.java              ProjectRClassFinder.java  RInnerClass.java
+CoumpoundInnerClass.java  IRClass.java          ManifestPackageExtractor.java  RClass.java
+
+./src/main/resources:
+androidannotations.properties  META-INF
+
+./src/main/resources/META-INF:
+services
+
+./src/main/resources/META-INF/services:
+javax.annotation.processing.Processor
+
+./src/test:
+java  resources
+
+./src/test/java:
+android  com  org
+
+./src/test/java/android:
+R.java
+
+./src/test/java/com:
+actionbarsherlock
+
+./src/test/java/com/actionbarsherlock:
+app  view
+
+./src/test/java/com/actionbarsherlock/app:
+SherlockActivity.java
+
+./src/test/java/com/actionbarsherlock/view:
+MenuItem.java
+
+./src/test/java/org:
+androidannotations
+
+./src/test/java/org/androidannotations:
+ebean  generation  helper  hierarchyviewer  logger  manifest  menu  rclass  receiver  rest  testprocessor  utils
+
+./src/test/java/org/androidannotations/ebean:
+EBeanTest.java  SomeActivity.java  SomeGenericBeanExt.java  SomeGenericBean.java  SomeImplementation.java  SomeInterface.java
+
+./src/test/java/org/androidannotations/generation:
+ActivityInManifest.java            ActivityWithOnBackPressedMethod.java   SharedPrefsApiDependenciesTest.java
+ActivityIntentFragmentTest.java    OnBackgroundApiDependenciesTest.java   SharedPrefs.java
+ActivityWithBackgroundMethod.java  OnBackPressedApiDependenciesTest.java
+
+./src/test/java/org/androidannotations/helper:
+CaseHelperTest.java
+
+./src/test/java/org/androidannotations/hierarchyviewer:
+HierarchyViewerActivity.java  HierarchyViewerActivityTest.java
+
+./src/test/java/org/androidannotations/logger:
+formatter  LoggerTest.java
+
+./src/test/java/org/androidannotations/logger/formatter:
+FormatterTest.java
+
+./src/test/java/org/androidannotations/manifest:
+ActivityInManifest.java     ActivitySubclassInManifest.java  AndroidManifestFinderTest.java
+ActivityNotInManifest.java  AndroidManifestErrorsTest.java   SomeClass.java
+
+./src/test/java/org/androidannotations/menu:
+ActivityWithSherlockMenu.java  OptionMenuErrorsTest.java  R.java  SherlockActivityWithAndroidMenu.java
+
+./src/test/java/org/androidannotations/rclass:
+ManifestPackageExtractorTest.java  RClassFinderTest.java
+
+./src/test/java/org/androidannotations/receiver:
+ActivityWithInvalidRegisterAt.java  FragmentWithValidReceiver.java   ServiceWithValidReceiver.java
+ActivityWithTwoSameNameMethod.java  ReceiverRegistrationTest.java
+ActivityWithValidReceiver.java      ServiceWithInvalidReceiver.java
+
+./src/test/java/org/androidannotations/rest:
+AbstractConverter.java              ClientWithPathVariable.java                 ClientWithWrongInterface.java
+AbstractInterceptor.java            ClientWithPrimitiveReturnType.java          Entity.java
+ClassClient.java                    ClientWithRequestEntity.java                RestConverterTest.java
+ClientWithAbstractConverter.java    ClientWithResponseEntity.java               RestInterceptorTest.java
+ClientWithAbstractInterceptor.java  ClientWithValidConverter.java               RestTest.java
+ClientWithAllInterfaces.java        ClientWithValidInterceptor.java             ValidInterceptor.java
+ClientWithNoConverters.java         ClientWithWrongConstructorConverter.java    WrongConstructorConverter.java
+ClientWithNonConverter.java         ClientWithWrongConstructorInterceptor.java  WrongConstructorInterceptor.java
+ClientWithNonInterceptor.java       ClientWithWrongEnhancedMethod.java
+
+./src/test/java/org/androidannotations/testprocessor:
+R.java
+
+./src/test/java/org/androidannotations/utils:
+AAProcessorTestHelper.java  ClassFinder.java  ProcessorAssert.java  ProcessorTestHelper.java
+
+./src/test/resources:
+org
+
+./src/test/resources/org:
+androidannotations
+
+./src/test/resources/org/androidannotations:
+ebean  generation  hierarchyviewer  manifest  menu  rclass  receiver  rest
+
+./src/test/resources/org/androidannotations/ebean:
+AndroidManifest.xml
+
+./src/test/resources/org/androidannotations/generation:
+AndroidManifestMinFroyo.xml  AndroidManifestMinJB.xml  AndroidManifest.xml  Fragment.java  support
+
+./src/test/resources/org/androidannotations/generation/support:
+Fragment.java
+
+./src/test/resources/org/androidannotations/hierarchyviewer:
+AndroidManifest.xml  NoDebbugableManifest.xml  NoInternetPermissionManifest.xml
+
+./src/test/resources/org/androidannotations/manifest:
+AndroidManifest.xml  ParseErrorManifest.xml
+
+./src/test/resources/org/androidannotations/menu:
+AndroidManifest.xml
+
+./src/test/resources/org/androidannotations/rclass:
+AndroidManifest.xml
+
+./src/test/resources/org/androidannotations/receiver:
+AndroidManifest.xml
+
+./src/test/resources/org/androidannotations/rest:
+AndroidManifest.xml  NoInternetPermissionManifest.xml

@@ -1,4 +1,29 @@
 https://github.com/excilys/androidannotations.git	// code reposity
+Total 注1
+
+
+//Note for myself---------------------------------------
+Activator.java 	//参考OSGI 开发
+MANIFEST.MF	//bundle 部署描述文件
+OSGi 分布式通讯组件 R-OSGi http://www.oschina.net/p/r-osgi
+OSGI(Open Services Gateway Initiative)	http://longdick.iteye.com/blog/457310
+http://developer.51cto.com/art/200909/152209.htm
+Servlet EJB规范
+OSGI规范：OSGI容器需要实现的服务集合； OSGI容器和应用之间通信的机制
+在OSGI的领域，发布的软件是以bundle的形式出现。
+OSGI 能够把应用分解成多个模块 然后管理各个模块间的依赖关系
+MANIFEST.MF 中：(为什么会看到多个MANIFEST.MF 不同dir 中)
+	Import-Package --导入包
+
+Java 读取Properties 的六种方法http://hi.baidu.com/hgd0324/item/1d5e923973b77c4d033edcaf
+http://blog.csdn.net/terrytowne/article/details/18214373	//how to use AA	
+
+org.androidannotations.AndroidAnnotationProcessor（？？？）	//find in http://www.iteye.com/topic/1124924 (d 注1)
+
+//----------------------------------------------------
+
+
+
 androidannotations-with-codemodel	//定义了输出jar 包
 
 androidannotations-api	
@@ -18,7 +43,70 @@ androidannotations-api
 androidannotations 核心 负责生成code
 	src/main/eclipse
 	src/main/java
-	src/main/resources
+		AndroidAnnotationProcessor 可以看作是入口：
+		构建org.androidannotations.handler.AnnotationHandlers实例，会加入很多handler实例到AnnotationHandlers实例中 
+		以EActivity看，EActivityHandler--EActivityHolder
+			Package1(handler)
+																														public interface AnnotationHandler<T extends GeneratedClassHolder>
+																															|--public interface GeneratingAnnotationHandler<T extends GeneratedClassHolder>
+																																|--public class EViewGroupHandler
+																																|--public class EActivityHandler
+																															|--public abstract class BaseAnnotationHandler<T extends GeneratedClassHolder>
+																																|--public abstract class AbstractListenerHandler
+																																|--public class EViewGroupHandler
+																																|--public class EActivityHandler
+																																
+																														public class AnnotationHandlers
+			Package2(holder)
+																														public interface GeneratedClassHolder
+																															|--public abstract class BaseGeneratedClassHolder
+																																|--public class SharedPrefHolder
+																																|--public class RestHolder
+																																|--public abstract class EComponentHolder
+																																	|--public class EApplicationHolder
+																																	|--public class EServiceHolder
+																																		|--public class EIntentServiceHolder
+																																	|--public abstract class EComponentWithViewSupportHolder
+																																		|--public class EFragmentHolder
+																																		|--public class EBeanHolder
+																																		|--public class EActivityHolder
+																																		|--public class EViewHolder
+																																			|--public class EViewGroupHolder
+																																	|--public class EReceiverHolder
+																																	|--public class EProviderHolder
+																															|--public interface HasExtras
+																																|--public class EActivityHolder
+																															|--public interface HasOnActivityResult
+																																|--public class EFragmentHolder
+																																|--public class EActivityHolder
+																															|--public interface HasReceiverRegistration
+																																|--public class EFragmentHolder
+																																|--public class EServiceHolder
+																																|--public class EActivityHolder
+																															|--public interface HasOptionsMenu
+																																|--public class EFragmentHolder
+																																|--public class EActivityHolder
+																															|--public interface HasInstanceState
+																																|--public class EFragmentHolder
+																																|--public class InstanceStateHolder
+																																|--public class EActivityHolder
+																															|--public interface HasIntentBuilder
+																																|--public class EServiceHolder
+																																|--public class EActivityHolder
+																														public class NonConfigurationHolder
+																														public class FoundViewHolder
+																														public class OnActivityResultHolder
+																														public class OnSeekBarChangeListenerHolder
+																														public class ReceiverRegistrationHolder
+																														public class RoboGuiceHolder
+																														public class TextWatcherHolder
+		构建org.androidannotations.process.TimeStats实例，与Log的time相关
+		process->processThrowing->
+			extractAnnotations
+		
+		两个重要方法processAnnotations（）和 generateSources（），generateSources依赖processAnnotations的处理结果
+		
+	src/main/resources	//META-INF	javax.annotation.processing.Processor --content-- org.androidannotations.AndroidAnnotationProcessor	注册处理器（r 注1）
 
 star_he@realsil-MM2-1:~/linkHome/study/androidannotations/AndroidAnnotations/androidannotations-api/src/main$ ls java/ -R
 java/:

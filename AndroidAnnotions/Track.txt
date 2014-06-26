@@ -3,6 +3,21 @@ Total 注1
 
 
 //Note for myself---------------------------------------
+http://en.wikipedia.org/wiki/Java_annotation	//wiki 关于java annotation
+http://jingyan.baidu.com/article/5d368d1e306a913f61c05743.html	//eclipse 配置maven
+http://maven.apache.org/download.cgi	//maven
+手动安装JDT http://hi.baidu.com/legendofdream/item/febf4ae4724ff73a4cdcaf11
+亲测 第一个androidAnnotation test 搭建（By ant）
+http://blog.chinaunix.net/uid-25436678-id-3969860.html
+http://blog.csdn.net/limb99/article/details/9067827
+后测 导入Annotations 的example 例子时，需要配置Annotation Processing :androidannotations-3.0.1.jar  Android private library 里加入androidannotations-api-3.0.1.jar
+
+RestTemplate
+与Rest相关http://docs.spring.io/spring-android/docs/1.0.x/reference/htmlsingle/#rest-template
+Android 上两种 native Http request clients ：J2SE facitiles & HttpClient, 分别对应SimpleClientHttpRequestFactory & HttpComponentsClientHttpRequestFactory
+RestTemplate 支持gzip 压缩传输 只支持这一种类型
+
+
 Activator.java 	//参考OSGI 开发
 MANIFEST.MF	//bundle 部署描述文件
 OSGi 分布式通讯组件 R-OSGi http://www.oschina.net/p/r-osgi
@@ -19,6 +34,7 @@ Java 读取Properties 的六种方法http://hi.baidu.com/hgd0324/item/1d5e923973
 http://blog.csdn.net/terrytowne/article/details/18214373	//how to use AA	
 
 org.androidannotations.AndroidAnnotationProcessor（？？？）	//find in http://www.iteye.com/topic/1124924 (d 注1)
+
 
 //----------------------------------------------------
 
@@ -101,8 +117,13 @@ androidannotations 核心 负责生成code
 																														public class RoboGuiceHolder
 																														public class TextWatcherHolder
 		构建org.androidannotations.process.TimeStats实例，与Log的time相关
-		process->processThrowing->
+		process->processThrowing
+			(参数 TypeElement annotations 接口或类)
+			->
+			nothingToDo 检测是否存在annotations
 			extractAnnotations
+				通过ModelExtractor 去根据支持的annotation 类型返回AnnotationElementsHolder
+				->//
 		
 		两个重要方法processAnnotations（）和 generateSources（），generateSources依赖processAnnotations的处理结果
 		
